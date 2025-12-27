@@ -40,7 +40,7 @@ public class BoardVO {
 	
 	@Override
 	public String toString() {
-		return "BoardVO [brdNo=" + brdNo + ", brdTitle=" + brdTitle + ", brdWriter=" + brdWriter + ", brdDate="
-				+ brdDate + ", brdContent=" + brdContent + "]";
+		return brdNo + "\t" + brdTitle + "\t" + brdWriter + "\t"
+				+ brdDate + "\t" + brdContent;
 	}
 }

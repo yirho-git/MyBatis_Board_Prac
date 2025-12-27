@@ -22,7 +22,7 @@
  	 4) resultMap : 결과 레코드 컬럼명과 VO객체의 property명이 다를 경우에
  	              적절한 매핑을 위한 정보 제공을 위해 사용한다.             
   -->
-
+	
 	<resultMap id="boardMap" type="myboard.VO.BoardVO">
     	<id column="board_no" property="brdNo"/>
     	<result column="board_title" property="brdTitle"/>
@@ -33,18 +33,41 @@
 		
 	<insert id="brdWrite" parameterType="myboard.VO.BoardVO">
 		insert into jdbc_board
-		(board_no, board_title, board_writer, board_date, board_content)
 		values (board_seq.nextval, #{brdTitle}, #{brdWriter}, sysdate, #{brdContent})
+		(board_no, board_title, board_writer, board_date, board_content)
 	</insert>
 	
-	<select id="displayAll" resultMap="boardMap" >
-		select board_no, 
-			   board_title,
-			   board_writer,
-			   board_date,
-			   board_content 
+	<select id="showAll" resultMap="boardMap" >
+		select * 
 		  from jdbc_board 
 		  order by 1 desc
+	</select>
+	
+	<select id="search" resultMap="boardMap">
+		select *
+		  from jdbc_board 
+		 <where>
+		 	<if test=' brdNo != null and brdNo != "" '>
+		 		and board_no = #{brdNo}
+		 	</if> 
+		 
+		 	<if test=' brdTitle != null and brdTitle != "" '>
+		 		and board_title = #{brdTitle}
+		 	</if> 
+		 
+		 	<if test=' brdWriter != null and brdWriter != "" '>
+		 		and board_writer = #{brdWriter}
+		 	</if> 
+		 
+		 	<if test=' brdDate != null and brdDate != "" '>
+		 		and to_char(board_date) = #{brdDate}
+		 	</if> 
+		 
+		 	<if test=' brdContent != null and brdContent != "" '>
+		 		and board_content like '%' ||#{brdContent}|| '%'
+		 	</if> 
+		 
+		 </where>
 	</select>
 
 </mapper>
