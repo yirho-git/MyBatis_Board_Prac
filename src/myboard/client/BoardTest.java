@@ -28,7 +28,7 @@ public class BoardTest {
 //		}catch(Exception e) {
 //			e.printStackTrace();
 //		}
-//			
+//		////	
 		try (SqlSession session = myBatisUtil.getSqlSession()){
 			List<BoardVO> boardList = session.selectList("board.displayAll");
             
