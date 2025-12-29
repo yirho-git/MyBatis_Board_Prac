@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-	<properties resource="res/config/db.properties" />
+	<properties resource="config/db.properties" />
 	
 	<environments default="dev">
 		<environment id="dev">
