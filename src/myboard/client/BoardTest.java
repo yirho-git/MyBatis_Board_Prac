@@ -52,6 +52,7 @@ public class BoardTest {
 			e.printStackTrace();
 		}
 		
+		/*
 		try (SqlSession session = myBatisUtil.getSqlSession()) {
 			//int paramNo = 3;
 			String paramWriter = "작성자A";
@@ -78,6 +79,6 @@ public class BoardTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+	*/
 	}	
 }
