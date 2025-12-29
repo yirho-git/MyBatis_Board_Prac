@@ -66,8 +66,12 @@
 		 	<if test=' brdContent != null and brdContent != "" '>
 		 		and board_content like '%' ||#{brdContent}|| '%'
 		 	</if> 
-		 
 		 </where>
 	</select>
+	
+	<insert id="update">
+		update jdbc_board set board_no = #{brdNo}
+							
+	</insert>
 
 </mapper>
