@@ -2,10 +2,12 @@ package myboard.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.session.SqlSession;
 
 import myboard.VO.BoardVO;
 import myboard.util.myBatisUtil;
+import oracle.jdbc.logging.annotations.Blind;
 
 public class BoardDAOImpl implements BoardDAO {
 
@@ -60,14 +62,25 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public int updateBoard(BoardVO vo) {
-		
-		return 0;
+		int cnt = 0;
+		try(SqlSession session = myBatisUtil.getSqlSession()){
+			cnt = session.update(null, session);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return cnt;
 	}
 
 	@Override
 	public int deleteBoard(int brdNo) {
-		// TODO Auto-generated method stub
-		return 0;
+		int cnt=0;
+		try(SqlSession session = myBatisUtil.getSqlSession()){
+			cnt = session.delete("board.delete", brdNo);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return cnt;
 	}
 
 }

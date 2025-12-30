@@ -6,10 +6,11 @@ import org.apache.ibatis.session.SqlSession;
 
 import myboard.VO.BoardVO;
 import myboard.util.myBatisUtil;
+import oracle.security.o3logon.b;
 
 public class BoardTest {
 	public static void main(String[] args) {
-		/*
+		/* 
 		try (SqlSession session = myBatisUtil.getSqlSession()){
 			BoardVO vo = new BoardVO();
 			vo.setBrdTitle("마이바티스 테스트");
@@ -80,5 +81,52 @@ public class BoardTest {
 			e.printStackTrace();
 		}
 	*/
+		
+		try(SqlSession session = myBatisUtil.getSqlSession()){
+			int cnt = 0;
+			
+			BoardVO vo = new BoardVO();
+			vo.setBrdNo(3);
+			vo.setBrdContent("업데이트 된 내용2");
+			cnt = session.update("board.update", vo);
+			if(cnt>0) {
+				System.out.println("업데이트 성공");
+			}
+			vo.setBrdContent("");
+			List<BoardVO> bList = session.selectList("board.search", vo);
+			
+			for(BoardVO v : bList) {
+				System.out.println(v.toString());
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try(SqlSession session = myBatisUtil.getSqlSession()){
+			int cnt = 0;
+			
+			cnt = session.update("board.delete", 2);
+			if(cnt>0) {
+				System.out.println("딜리트 성공");
+			}
+			
+			List<BoardVO> bList = session.selectList("board.showAll");
+			for(BoardVO v : bList) {
+				System.out.println(v.toString());
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}	
 }
+
+
+
+
+
+
+
+
+
+

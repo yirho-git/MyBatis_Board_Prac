@@ -68,10 +68,27 @@
 		 </where>
 	</select>
 
-<!-- 	
-	<insert id="update">
-		update jdbc_board set board_no = #{brdNo}
-							
-	</insert>
- -->
+	<update id="update" parameterType="myboard.VO.BoardVO">
+		update jdbc_board 
+		<set> 
+			<if test=' brdTitle != null and brdTitle != "" '>
+				board_title = #{brdTitle},
+			</if>
+			<if test=' brdWriter != null and brdWriter != "" '>
+				board_writer = #{brdWriter},
+			</if>
+			<if test=' brdDate != null and brdDate != "" '>
+				board_date = #{brdDate},
+			</if>
+			<if test=' brdContent != null and brdContent != "" '>
+				board_content = #{brdContent},
+			</if>
+		</set>				
+		where board_no = #{brdNo}							
+	</update>
+	
+	<delete id="delete" parameterType="myboard.VO.BoardVO">
+		delete from jdbc_board where board_no = #{brdNo}
+	</delete>
+	
 </mapper>
