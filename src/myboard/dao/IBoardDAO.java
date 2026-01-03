@@ -4,7 +4,7 @@ import java.util.List;
 
 import myboard.VO.BoardVO;
 
-public interface BoardDAO {
+public interface IBoardDAO {
 	
 	public int insertBoard(BoardVO vo);
 

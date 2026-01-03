@@ -2,14 +2,23 @@ package myboard.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.session.SqlSession;
 
 import myboard.VO.BoardVO;
 import myboard.util.myBatisUtil;
-import oracle.jdbc.logging.annotations.Blind;
 
-public class BoardDAOImpl implements BoardDAO {
+public class BoardDAOImpl implements IBoardDAO {
+
+	private static IBoardDAO dao = new BoardDAOImpl();
+	
+	private BoardDAOImpl() {
+
+	}
+	
+	public static IBoardDAO getInstance() {
+		return dao;
+	}
+	
 
 	@Override
 	public int insertBoard(BoardVO vo) {
@@ -30,11 +39,10 @@ public class BoardDAOImpl implements BoardDAO {
 	public List<BoardVO> displayAll() {
 		List<BoardVO> bList = null;
 		try(SqlSession session = myBatisUtil.getSqlSession()){
-			bList = session.selectList("board.ShowAll");
+			bList = session.selectList("board.showAll");
 			
 			if(bList == null || bList.isEmpty()) {
 				bList = null;
-				//System.out.println("게시글이 없습니다.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -64,7 +72,7 @@ public class BoardDAOImpl implements BoardDAO {
 	public int updateBoard(BoardVO vo) {
 		int cnt = 0;
 		try(SqlSession session = myBatisUtil.getSqlSession()){
-			cnt = session.update(null, session);
+			cnt = session.update("board.update", vo);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

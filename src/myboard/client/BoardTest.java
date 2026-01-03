@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 
 import myboard.VO.BoardVO;
 import myboard.util.myBatisUtil;
-import oracle.security.o3logon.b;
 
 public class BoardTest {
 	public static void main(String[] args) {
@@ -35,7 +34,7 @@ public class BoardTest {
 			List<BoardVO> boardList = session.selectList("board.showAll");
 
 			System.out.println("--------------------------------------------------");
-			System.out.println("번호 \t 제목 \t 작성자 \t 날짜");
+			System.out.println("번호 \t 제목 \t 작성자 \t 날짜 \t 내용");
 			System.out.println("--------------------------------------------------");
 
 			if (boardList == null || boardList.isEmpty()) {
@@ -81,7 +80,7 @@ public class BoardTest {
 			e.printStackTrace();
 		}
 	*/
-		
+	/*	
 		try(SqlSession session = myBatisUtil.getSqlSession()){
 			int cnt = 0;
 			
@@ -118,7 +117,8 @@ public class BoardTest {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-	}	
+		*/
+	}
 }
 
 
