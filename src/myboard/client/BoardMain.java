@@ -30,7 +30,6 @@ public class BoardMain {
 			sc.nextLine();
 			BoardVO vo = new BoardVO();
 			System.out.println("제목 입력 : ");
-			vo.se
 			break;
 			
 		}
