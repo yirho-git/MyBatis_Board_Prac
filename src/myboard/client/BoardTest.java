@@ -30,6 +30,7 @@ public class BoardTest {
 		}
 		*/
 			
+		//전체 출력 테스트완료
 		try (SqlSession session = myBatisUtil.getSqlSession()) {
 			List<BoardVO> boardList = session.selectList("board.showAll");
 
@@ -50,6 +51,7 @@ public class BoardTest {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		
 		}
 		
 		/*
