@@ -3,8 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
 	<properties resource="config/db.properties" />
+
+	<settings>
+ 	   <setting name="logImpl" value="LOG4J2"/>
+	</settings>
+	
+	<typeAliases>
+        <typeAlias type="myboard.VO.BoardVO" alias="BVO"/>
+    </typeAliases>
+	
 	
 	<environments default="dev">
 		<environment id="dev">

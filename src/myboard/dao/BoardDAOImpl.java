@@ -39,6 +39,7 @@ public class BoardDAOImpl implements IBoardDAO {
 	public List<BoardVO> displayAll() {
 		List<BoardVO> bList = null;
 		try(SqlSession session = myBatisUtil.getSqlSession()){
+			
 			bList = session.selectList("board.showAll");
 			
 			if(bList == null || bList.isEmpty()) {
@@ -54,6 +55,7 @@ public class BoardDAOImpl implements IBoardDAO {
 	public List<BoardVO> searchBoard(BoardVO paramVO) {
 		List<BoardVO> bList = null;
 		try(SqlSession session = myBatisUtil.getSqlSession()){
+			
 			bList = session.selectList("board.search", paramVO);
 			
 			if(bList==null||bList.isEmpty()) {
@@ -72,7 +74,10 @@ public class BoardDAOImpl implements IBoardDAO {
 	public int updateBoard(BoardVO vo) {
 		int cnt = 0;
 		try(SqlSession session = myBatisUtil.getSqlSession()){
+			
 			cnt = session.update("board.update", vo);
+			
+			session.commit();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -83,7 +88,10 @@ public class BoardDAOImpl implements IBoardDAO {
 	public int deleteBoard(int brdNo) {
 		int cnt=0;
 		try(SqlSession session = myBatisUtil.getSqlSession()){
+			
 			cnt = session.delete("board.delete", brdNo);
+			
+			session.commit();
 		}catch(Exception e){
 			e.printStackTrace();
 		}

@@ -63,7 +63,7 @@
 		 	</if> 
 		 
 		 	<if test=' brdContent != null and brdContent != "" '>
-		 		and board_content like '%' ||#{brdContent}|| '%'
+		 		and board_content like '%'||#{brdContent}||'%'
 		 	</if> 
 		 </where>
 	</select>
@@ -87,7 +87,7 @@
 		where board_no = #{brdNo}							
 	</update>
 	
-	<delete id="delete" parameterType="myboard.VO.BoardVO">
+	<delete id="delete" parameterType="BVO">
 		delete from jdbc_board where board_no = #{brdNo}
 	</delete>
 	

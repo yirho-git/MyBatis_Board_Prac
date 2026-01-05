@@ -13,24 +13,28 @@ public class BoardVO {
 	public void setBrdNo(int brdNo) {
 		this.brdNo = brdNo;
 	}
+	
 	public String getBrdTitle() {
 		return brdTitle;
 	}
 	public void setBrdTitle(String brdTitle) {
 		this.brdTitle = brdTitle;
 	}
+	
 	public String getBrdWriter() {
 		return brdWriter;
 	}
 	public void setBrdWriter(String brdWriter) {
 		this.brdWriter = brdWriter;
 	}
+	
 	public String getBrdDate() {
 		return brdDate;
 	}
 	public void setBrdDate(String brdDate) {
 		this.brdDate = brdDate;
 	}
+
 	public String getBrdContent() {
 		return brdContent;
 	}
