@@ -3,7 +3,7 @@ package myboard.service;
 import java.util.List;
 
 import myboard.VO.BoardVO;
-
+//서비스레이어 인터페이스
 public interface IBoardService {
 	
 	public int write(BoardVO vo);

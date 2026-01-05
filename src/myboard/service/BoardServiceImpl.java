@@ -6,22 +6,22 @@ import myboard.VO.BoardVO;
 import myboard.dao.BoardDAOImpl;
 import myboard.dao.IBoardDAO;
 
-public class BoardServiceImpl implements IBoardService{
-	
+public class BoardServiceImpl implements IBoardService {
+	//싱글톤
 	private static IBoardService service = new BoardServiceImpl();
 	private IBoardDAO dao = BoardDAOImpl.getInstance();
-	
-	private BoardServiceImpl() {
 
+	private BoardServiceImpl() {
+		
 	}
-	
+
 	public static IBoardService getInstance() {
 		return service;
 	}
 
 	@Override
 	public int write(BoardVO vo) {
-		return dao.insertBoard(vo); 
+		return dao.insertBoard(vo);
 	}
 
 	@Override
