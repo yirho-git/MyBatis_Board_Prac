@@ -7,7 +7,7 @@ import myboard.dao.BoardDAOImpl;
 import myboard.dao.IBoardDAO;
 
 public class BoardServiceImpl implements IBoardService {
-	//싱글톤
+	
 	private static IBoardService service = new BoardServiceImpl();
 	private IBoardDAO dao = BoardDAOImpl.getInstance();
 
