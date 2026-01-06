@@ -3,3 +3,6 @@ res/config/db.properties
 
 # 컴파일된 파일 제외
 /bin/
+
+# 로그파일 제외
+Logs/app.log
